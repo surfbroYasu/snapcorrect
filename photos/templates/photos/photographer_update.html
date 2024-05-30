@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% if photographer.user == request.user %}
+
+
+<form action="." method="post" class="flex justify-center bg-gray-100">
+{% csrf_token %}
+
+
+  <!-- top header -->
+  <div class="flex flex-col justify-center items-center my-10 lg:w-2/4 w-full">
+    <div class="w-20 h-20 bg-cover bg-center bg-no-repeat rounded-full">
+      <img src="{{ photographer.image.url }}" alt="{{ photographer.artist_name }}">
+    </div>
+    {{form.image}}
+    <span class="my-3 text-center font-semibold text-lg">
+      <i class='bx bx-camera' ></i> {{form.artist_name}}
+    </span>
+    <span class="my-3 text-center font-semibold text-lg">
+      <i class='bx bx-map-pin' ></i> {{form.base_location}}
+    </span>
+    {{form.bio}}
+
+    <button type="submit" class="btn overflow-hidden relative w-64 bg-orange-200 text-white py-4 px-4 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-orange-400 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-orange-200 hover:before:animate-ping transition-all duration-300 mt-4">
+      <span class="relative text-lg text-orange-700">変更</span>
+    </button>
+  </div>
+<!-- top header end -->
+
+</form>
+    {% endif %}
+{% endblock body %}

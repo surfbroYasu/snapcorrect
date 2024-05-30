@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+<!-- component -->
+<div class="py-10 bg-white">  
+  <div class="bg-gradient-to-r from-teal-500 to-teal-700 p-10 rounded-lg">
+    <h2 class="text-white text-3xl text-center">英作文で繋がる、新しいプラットフォーム</h2>
+    <p class="text-white mt-2 text-lg text-center mt-5">{{app_name}}は、写真家、英語の学習者、フィードバック提供者の三者を効果的にマッチアップさせることをコンセプトにしています。</p>
+    <p class="text-white mt-2 text-lg text-center">このプラットフォームを通じて、各々が持つ才能とスキルを最大限に活かし、相互に成長し合える環境を提供します。</p>
+  </div>
+</div>
+
+<!-- component -->
+<div class="py-12 bg-white">  
+  <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+    <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
+      <div class="md:7/12 lg:w-6/12">
+        <h2 class="text-2xl text-gray-900 font-bold md:text-4xl">英語の学習者へ</h2>
+        <p class="mt-6 text-lg text-gray-600">美しい写真を素材に、楽しみながら英作文の練習ができます!</p>
+        <p class="mt-4 text-lg text-gray-600">視覚的な刺激を受けることで、創造力が高まり、英語のアウトプット能力を効果的に向上させることができます。SnapCorrectは、あなたの英語力を次のレベルに引き上げる強力なツールです。</p>
+      </div>
+      <div class="md:5/12 lg:w-5/12">
+        <img src="{% static "app/writing.jpg" %}" alt="image" loading="lazy" width="" height="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- component -->
+<div class="py-12 bg-white">  
+  <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+    <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
+      <div class="md:5/12 lg:w-5/12">
+        <img src="{% static "app/photographer.jpg" %}" alt="image" loading="lazy" width="" height="">
+      </div>
+      <div class="md:7/12 lg:w-6/12">
+        <h2 class="text-2xl text-gray-900 font-bold md:text-4xl">写真家の方へ</h2>
+        <p class="mt-6 text-lg text-gray-600">SnapCorrectは、あなたの作品を商用利用したいと考える企業や個人からオファーを受け取る絶好のチャンスです。</p>
+        <p class="mt-4 text-lg text-gray-600">あなたの美しい写真が、英作文の素材として使われることで、多くの人々に作品を見てもらうことができます。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- component -->
+<div class="py-12 bg-white mb-10">  
+  <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+    <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
+      <div class="md:7/12 lg:w-6/12">
+        <h2 class="text-2xl text-gray-900 font-bold md:text-4xl">フィードバック提供者へ</h2>
+        <p class="mt-6 text-lg text-gray-600">SnapCorrectは、あなたの英語力をアピールする場であり、また英会話教室のプロモーションとしても活用できます。</p>
+        <p class="mt-4 text-lg text-gray-600">質の高いフィードバックを提供することで、学習者の成長を支援し、同時に自身のスキルを証明することができます。
+        </p>
+      </div>
+      <div class="md:5/12 lg:w-5/12">
+        <img src="{% static "app/tutor.jpg" %}" alt="image" loading="lazy" width="" height="">
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

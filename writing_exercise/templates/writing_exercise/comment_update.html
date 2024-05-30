@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+
+<form action="{% url "writing:like" object.id %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {{object.id}}
+  <input type="submit">
+</form>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block section_title %}Photos{% endblock section_title %}
+
+{% block body %}
+
+<div class="flex justify-center flex-wrap 2xl:mx-20 bg-gray-200">
+
+  {% for photo in photo.all %}
+  <div class="h-72 rounded-lg bg-white w-80 my-20 mx-10 justify-center shadow-md">
+    <a href="{% url 'writing:writing_page' photo.pk %}">
+    {% include "includes/cards/image.html" %}
+    </a>
+  </div>
+  {% endfor %}
+  
+
+</div>
+
+
+{% endblock body %}
+
+
+
+

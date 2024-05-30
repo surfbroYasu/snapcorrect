@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+export DEBUG=1
+export SECRET_KEY='snapcorrect'
+export DJANGO_ALLOWED_HOSTS=* localhost 127.0.0.1[::1]
+
+
+# "ADD yours here"

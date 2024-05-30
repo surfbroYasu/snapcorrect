@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+<div class="flex justify-center bg-gray-100">
+
+
+
+        <!-- top header -->
+        <div class="flex flex-col justify-center items-center my-10 lg:w-2/4 w-full">
+          <div class="w-20 h-20 bg-cover bg-center bg-no-repeat rounded-full">
+            <img src="{{ photographer.image.url }}" alt="{{ photographer.artist_name }}">
+          </div>
+          <span class="my-2 text-center font-semibold text-lg">
+            <i class='bx bx-camera' ></i> {{photographer.artist_name}}
+          </span>
+          <span class="my-2 text-center text-lg">
+            <i class='bx bx-map-pin' ></i> {{photographer.base_location}}
+          </span>
+          
+          <div class="flex gap-10 text-sm mb-3">
+            <div class="flex flex-col items-center">
+              <span class="font-bold">{{photographer.photos.count}}</span>
+              <span>Images</span>
+            </div>
+            <!-- 
+              <div class="flex flex-col items-center">
+                <span class="font-bold">1.20 K</span>
+                <span>Followers</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <span class="font-bold">100 K</span>
+                <span>Likes</span>
+              </div>
+            -->
+            
+          </div>
+          
+          <p class="mb-3 px-8">{{photographer.bio | linebreaksbr}}</p>
+          {% if photographer.user == request.user %}
+          <a href="{% url 'photos:edit_photographer' pk=photographer.id %}">
+            <button class="my-5 px-5 py-2 text-sm border border-gray-100 bg-gray-400">編集</button>
+          </a>
+          {% endif %}
+        </div>
+        
+        <!-- top header end -->
+      
+    </div>
+
+    {% for photo in photographer.photos.all %}
+
+
+      <div class="flex justify-center flex-wrap 2xl:mx-20">
+
+        <div class="h-72 rounded-lg bg-white w-80 my-20 mx-10 justify-center shadow-md">
+
+          {% include "includes/cards/image.html" %}
+          </a>
+        </div>
+
+      </div>
+
+    {% endfor %}
+
+
+    <!-- Add image button float -->
+    {% if photographer.user == request.user %}
+    <a href="{}" class="relative">
+      <button class="text-white flex flex-col shrink-0 grow-0 justify-around 
+      fixed bottom-0 right-0 right-5 rounded-lg
+      mr-1 mb-5 lg:mr-5 lg:mb-5 xl:mr-10 xl:mb-10">
+        <div class="p-3 rounded-full border-4 border-orange-200 bg-teal-500 ">
+          <p>画像追加</p>
+          <svg
+          class="w-8 h-8 lg:w-12 lg:h-12 xl:w-16 xl:h-16"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+          >
+          <path d="M20 5h-2.586l-2.707-2.707A.996.996 0 0 0 14 2h-4a.996.996 0 0 0-.707.293L6.586 5H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm-8 12c-2.71 0-5-2.29-5-5 0-2.711 2.29-5 5-5s5 2.289 5 5c0 2.71-2.29 5-5 5z"></path><path d="M13 9h-2v2H9v2h2v2h2v-2h2v-2h-2z"></path>
+        </svg>
+      </div>
+    
+    </button>
+  </a>
+{% endif %}
+
+
+{% endblock body %}

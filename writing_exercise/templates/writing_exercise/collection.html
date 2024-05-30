@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block section_title %}My collections{% endblock section_title %}
+{% block body %}
+
+<div class="flex justify-center flex-wrap 2xl:mx-20">
+  {% for collection in collections  %}
+    <div class="p-4 md:w-1/2 lg:w-1/3 xl:w-1/4">
+      <a href="{% url 'writing:class_room' collection.pk %}">
+      {% include "includes/cards/my_writing_collection.html" %}
+      </a>
+    </div>  
+  {% endfor %}
+</div>
+
+
+{% endblock body %}
+

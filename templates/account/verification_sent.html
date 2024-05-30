@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load allauth %}
+{% block head_title %}
+    {% trans "Verify Your Email Address" %}
+{% endblock head_title %}
+{% block body %}
+<div class="flex justify-center text-white text-lg">
+
+  {% element h1 %}
+</div>
+{% endelement %}
+{% element p %}
+<div class="flex justify-center text-white">
+</div>
+
+
+
+<div class="relative flex flex-col items-center justify-center overflow-hidden py-6 sm:py-12 mb-30 bg-white">
+  <div class="max-w-xl px-5 text-center">
+    <h2 class="mb-2 text-[42px] font-bold text-zinc-800">
+        メールを確認してください
+        </h2>
+        <p class="mb-2 text-lg text-zinc-500">
+          {% blocktrans %}We have sent an email to you for verification. Follow the link provided to finalize the signup process. If you do not see the verification email in your main inbox, check your spam folder. Please contact us if you do not receive the verification email within a few minutes.{% endblocktrans %}
+          {% endelement %}
+        </p>
+      </div>
+    </div>
+{% endblock body %}

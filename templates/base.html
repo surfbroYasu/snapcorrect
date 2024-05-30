@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{app_name}}{% block title %}{% endblock title %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/boxicons@2.0.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="flex flex-col h-screen justify-between">
+  <div>
+    <!-- nav component -->
+    <nav class="bg-white py-2 border-b-2 border-teal-600">
+      <div class="w-full mx-auto px-5 md:px-28">
+        <div class="mx-2 flex flex-wrap items-center justify-between">
+
+          <!-- logo -->
+          <a href="/" class="flex">
+            <img src="{% static 'app/sc-logo-500px-croped.png' %}" width="70" height="70" alt="snapcorrect">
+              <span class="self-center text-2xl font-semibold whitespace-nowrap mx-2">{{app_name}}</span>
+          </a>
+          <!-- endlogo -->
+
+          <!-- responsive nav button -->
+          <div class="flex lg:hidden lg:order-2">
+              <button data-collapse-toggle="mobile-menu-3" type="button" id="dropdown-menu"
+                  class="lg:hidden text-gray-200 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-lg inline-flex items-center justify-center"
+                  aria-controls="mobile-menu-3" aria-expanded="false">
+                  <span class="sr-only">Open main menu</span>
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                          d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                          clip-rule="evenodd"></path>
+                  </svg>
+                  <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path>
+                  </svg>
+              </button>
+          </div>
+          <!-- end responsive nav button -->
+          
+
+          <!-- nav links -->
+          <div id="menu" class="hidden lg:flex justify-between items-end w-full lg:w-auto lg:order-1" id="mobile-menu-3">
+            <ul class="flex-col lg:flex-row flex lg:space-x-8 mt-4 lg:mt-0 lg:text-sm lg:font-medium lg:items-center">
+              <li>
+                  <a href="/"
+                      class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0"
+                      aria-current="page">Home</a>
+              </li>
+
+              <li>
+                <a href="{% url 'core:about' %}"
+                    class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0"
+                    aria-current="page">アプリ概要</a>
+            </li>
+            <li>
+              <!-- if user already registered as a photographer => send user to photo page
+                 ELSE send to register page -->
+              {% if request.user.photographer %}
+              <a href="{% url 'photos:photographer' request.user.photographer.id %}"
+                  class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0"
+                  aria-current="page">写真を投稿</a>
+              {% else %}
+              
+              <a href="{% url 'photos:create_photographer' %}"
+                  class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0"
+                  aria-current="page">写真を投稿</a>
+            </li>
+            {% endif %}
+
+              <!-- user menu links -->
+              {% if user.is_authenticated %}
+              <!-- user dropdown -->
+              <div class="w-[130px] text-gray-900">
+                <div class="relative w-full group">
+                  <button class="py-2.5 px-3 w-full md:text-lg text-sm text-site bg-transparent border border-dimmed  focus:border-brand focus:outline-none focus:ring-0 peer flex items-center justify-between rounded font-semibold">
+                    <i class='bx bx-user-circle text-2xl' > </i> {{request.user.username}} <i class='bx bxs-down-arrow'></i>
+                  </button>
+                  <div
+                    class="absolute z-[99] top-[100%] left-[50%] translate-x-[-50%] rounded-md overflow-hidden shadow-lg min-w-[200px] w-max peer-focus:visible peer-focus:opacity-100 opacity-0 invisible duration-200 p-1 bg-gray-100 dark:bg-gray-800  border border-dimmed text-xs md:text-sm">
+                    <div
+                      class=" w-full block cursor-pointer hover:bg-white dark:hover:bg-gray-900 dark:bg-gray-800 hover:text-link px-3 py-2 rounded-md">
+                      <a href="{% url 'writing:collection' %}"
+                        class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0">
+                        <i class='bx bx-collection' ></i> My collection
+                      </a>
+                    </div>
+                    <div
+                      class=" w-full block cursor-pointer hover:bg-white dark:hover:bg-gray-900 dark:bg-gray-800 hover:text-link px-3 py-2 rounded-md">
+                      <a href="{% url 'writing:waiting_list' %}"
+                        class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0">
+                        <i class='bx bx-edit' ></i> 回答する
+                      </a>
+                    </div>
+                    <div
+                      class=" w-full block cursor-pointer hover:bg-white dark:hover:bg-gray-900 dark:bg-gray-800 hover:text-link px-3 py-2 rounded-md">
+                      <form method="post" action="{% url 'account_logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0">
+                          <i class='bx bx-log-out' ></i> Logout
+                        </button>
+                      </form>
+                    </div>
+                    <div
+                      class=" w-full block cursor-pointer hover:bg-white dark:hover:bg-gray-900 dark:bg-gray-800 hover:text-link px-3 py-2 rounded-md">
+                      <a href="{% url 'account_reset_password' %}" class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0">
+                        <i class='bx bx-key' ></i>パスワード再設定
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end user dropdown -->
+                
+            {% else %}
+              <li><a href="{% url 'account_login' %}" class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0">Login</a></li>
+              <li></li>
+            {% endif %}
+            <!-- end user menu links -->
+            </ul>
+          </div>
+          <!-- end nav links -->
+
+        </div>
+      </div>
+
+    </nav>
+    <!-- end nav component -->
+
+
+
+
+    <!-- main -->
+    <div class="bg-gradient-to-b from-teal-700 to-teal-200 min-h-screen">
+      
+      <div class="flex justify-center pt-5">
+        <h2 class="text-3xl font-bold text-gray-800">
+          {% block section_title %}{% endblock section_title %}
+        </h2>
+      </div>
+
+    {% block body %}
+
+      
+
+    {% endblock body %}
+    
+    </div>
+  </div>
+  <!-- end main -->
+
+  <!-- footer -->
+  <footer class="fixed left-10 bottom-5 h-10 bg-teal-0 py-5">
+    <small class="text-white my-3">
+      &copy; 2024 {{app_name}}. All rights reserved.
+    </small>
+  </footer>
+  <!-- end footer -->
+
+</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+    {% block script %}{% endblock script%}
+
+  </body>
+</html>
