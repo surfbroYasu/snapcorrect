@@ -20,6 +20,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount.providers.google',
     "debug_toolbar",
     'django_ckeditor_5',
+    'storages',
 ]
 
 APPS = [

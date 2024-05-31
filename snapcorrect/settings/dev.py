@@ -57,10 +57,41 @@ MEDIA_URL = "/media/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    BASE_DIR / "media",
+    # BASE_DIR / "media",
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+
+AWS_STORAGE_BUCKET_NAME = 'snapcorrect'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_FILE_OVERWRITE = False
+
+STORAGES = {
+    # media file management
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage"
+        },
+    # CSS and JS file management
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage"
+        },
+}
+
+
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'SnapCorrect'
+ACCOUNT_EMAIL_PREFIX = ''
