@@ -5,8 +5,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = os.environ.get("DEBUG")
-PRODUCTION = os.environ.get("PRODUCTION")
+DEBUG = str(os.environ.get("DEBUG"))=="1" #1 being True
+# Change Debug setting by changing number preferably to "0" for DEBUG=False
+
+PRODUCTION = str(os.environ.get("PRODUCTION"))=="0" #1 being True
+# This is a dev setting defult PRODUCTION = "0" being false
+
+
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 INTERNAL_IPS = [
     # ...
@@ -24,6 +29,23 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+# POSTGRES_DB = os.getenv("POSTGRES_DB")
+# POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+# POSTGRES_USER = os.getenv("POSTGRES_USER")
+# POSTGRES_HOST = os.getenv("POSTGRES_HOST")
+# POSTGRES_PORT = os.getenv("POSTGRES_PORT")
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": POSTGRES_DB,
+#         "USER": POSTGRES_USER,
+#         "PASSWORD": POSTGRES_PASSWORD,
+#         "HOST": POSTGRES_HOST,
+#         "PORT": POSTGRES_PORT,
+#     }
+# }
 
 
 # Static files (CSS, JavaScript, Images)
