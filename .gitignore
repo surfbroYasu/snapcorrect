@@ -97,3 +97,6 @@ media/
 static/
 
 app-description.txt
+
+requirements.txt
+*.txt
