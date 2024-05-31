@@ -11,6 +11,7 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",
+    'localhost:8000'
     # ...
 ]
 
