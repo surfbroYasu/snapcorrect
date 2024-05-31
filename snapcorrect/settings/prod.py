@@ -12,8 +12,8 @@ DEBUG = str(os.environ.get("DEBUG"))=="0" #1 being True,
 PRODUCTION = str(os.environ.get("PRODUCTION"))=="1" #1 being True
 # This is the production setting keep it being True!
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
-
+ALLOWED_PROD_HOSTS = os.environ.get("DJANGO_ALLOWED_PROD_HOSTS")
+ALLOWED_HOSTS = ALLOWED_PROD_HOSTS
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

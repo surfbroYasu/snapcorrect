@@ -11,8 +11,9 @@ DEBUG = str(os.environ.get("DEBUG"))=="1" #1 being True
 PRODUCTION = str(os.environ.get("PRODUCTION"))=="0" #1 being True
 # This is a dev setting defult PRODUCTION = "0" being false
 
+ALLOWED_LOCAL_HOSTS = os.environ.get("DJANGO_ALLOWED_LOCAL_HOSTS").split(" ")
+ALLOWED_HOSTS = ALLOWED_LOCAL_HOSTS
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",

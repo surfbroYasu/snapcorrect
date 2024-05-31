@@ -1,0 +1,1 @@
+web: gunicorn snapcorrect.wsgi.prod --log-file -
