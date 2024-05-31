@@ -15,3 +15,14 @@ class PhotographerRegist(forms.ModelForm):
             'image': forms.ClearableFileInput(attrs={'class': 'form-control-file'})
         }
 
+class PhotoUploadForm(forms.ModelForm):
+    
+    class Meta:
+        model = Photo
+        fields = ['image', 'title', 'description', 'category']
+        
+        widgets = {
+            'title': forms.TextInput(attrs={"placeholder": "タイトル"}),
+            'description': forms.Textarea(attrs={"class": "w-full lg:border-l-2 border-orange-500 px-2 py-4", "wrap": "hard", "cols": 80, "rows": 4, "placeholder": "説明文"}),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control-file'})
+        }

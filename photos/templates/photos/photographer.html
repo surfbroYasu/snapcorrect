@@ -49,25 +49,24 @@
       
     </div>
 
-    {% for photo in photographer.photos.all %}
-
-
-      <div class="flex justify-center flex-wrap 2xl:mx-20">
+    
+    
+    <div class="flex justify-center flex-wrap 2xl:mx-20">
+        {% for photo in photographer.photos.all %}
 
         <div class="h-72 rounded-lg bg-white w-80 my-20 mx-10 justify-center shadow-md">
 
           {% include "includes/cards/image.html" %}
           </a>
         </div>
-
+        {% endfor %}
       </div>
 
-    {% endfor %}
 
 
     <!-- Add image button float -->
     {% if photographer.user == request.user %}
-    <a href="{}" class="relative">
+    <a href="{% url 'photos:photo_upload' %}" class="relative">
       <button class="text-white flex flex-col shrink-0 grow-0 justify-around 
       fixed bottom-0 right-0 right-5 rounded-lg
       mr-1 mb-5 lg:mr-5 lg:mb-5 xl:mr-10 xl:mb-10">

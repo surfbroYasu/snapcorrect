@@ -44,14 +44,13 @@ class Photo(models.Model):
         upload_to='images/',
         blank=False,
         null=False,
-        default='noImage.png'
     )
     title = models.CharField(
         max_length=50,
         null=True,
         default=""
     )
-    desctiption = models.TextField(
+    description = models.TextField(
         max_length=1000,
         null=True
     )

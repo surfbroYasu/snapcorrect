@@ -51,3 +51,23 @@ class PhotographerUpdate(LoginRequiredMixin, UpdateView):
     
     def get_success_url(self):
         return reverse_lazy('photos:photographer', kwargs={'pk': self.object.id})
+      
+class PhotoUpload(CreateView):
+    template_name = "photos/photo_upload.html"
+    model = Photo
+    form_class = PhotoUploadForm
+    
+    def form_valid(self, form):
+        print("****CALLLLLLLL")
+        obj = form.save(commit=False)
+        obj.photographer = self.request.user.photographer
+        obj.save()
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print("Form is invalid")
+        print(form.errors)
+        return super().form_invalid(form)
+    
+    def get_success_url(self):
+        return reverse_lazy('photos:photographer', kwargs={'pk': self.request.user.photographer.id})

@@ -59,15 +59,17 @@
                     class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0"
                     aria-current="page">アプリ概要</a>
             </li>
+            {% if request.user.photographer %}
             <li>
               <!-- if user already registered as a photographer => send user to photo page
-                 ELSE send to register page -->
-              {% if request.user.photographer %}
+                ELSE send to register page -->
+              
               <a href="{% url 'photos:photographer' request.user.photographer.id %}"
                   class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0"
                   aria-current="page">写真を投稿</a>
-              {% else %}
-              
+            </li>
+            {% else %}
+            <li>
               <a href="{% url 'photos:create_photographer' %}"
                   class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0"
                   aria-current="page">写真を投稿</a>
