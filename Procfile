@@ -1,1 +1,1 @@
-web: /app/.heroku/python/bin/gunicorn snapcorrect.wsgi.prod --log-file -
+web: /app/.heroku/python/bin/gunicorn snapcorrect.wsgi_prod --log-file -
