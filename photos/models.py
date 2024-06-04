@@ -38,6 +38,9 @@ class Category(models.Model):
         null = False,
         blank = False
     )
+    
+    def __str__(self):
+        return self.name
 
 class Photo(models.Model):
     image = models.ImageField(
