@@ -19,7 +19,7 @@ class Photographer(models.Model):
         null=True
     )
     image = models.ImageField(
-        upload_to='photographer_profile',
+        upload_to='photographer_profile/',
         null=True,
         default='sc-logo-sm-HD.png'
     )
