@@ -18,7 +18,6 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    "debug_toolbar",
     'django_ckeditor_5',
     'storages',
 ]
@@ -43,7 +42,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'allauth.account.middleware.AccountMiddleware',
 ]
 

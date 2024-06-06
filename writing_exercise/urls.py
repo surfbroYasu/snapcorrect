@@ -8,6 +8,8 @@ urlpatterns = [
     
     path("<int:pk>/compose", views.CompositionCreate.as_view(), name="writing_page"),
     path("<int:pk>/delete", views.DeleteComposition.as_view(), name="delete_composition"),
+    # path("<int:pk>/status", views.UpdateCompostitionStatus.as_view(), name="status"),
+    path("<int:pk>/status", views.update_status, name="status"),
     
     # class room is the page for comments and replies of a composition
     path('class-room/<int:pk>', views.ClassRoom.as_view(), name="class_room"),

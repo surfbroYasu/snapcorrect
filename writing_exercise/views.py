@@ -1,3 +1,4 @@
+from django.shortcuts import render, redirect
 from typing import Any
 from django.db.models.query import QuerySet
 from django.urls import reverse_lazy
@@ -66,6 +67,22 @@ class DeleteComposition(DeleteView):
     template_name = "writing_exercise/delete_composition.html"
     def get_success_url(self):
         return reverse_lazy('writing:collection')
+    
+    
+# class UpdateCompostitionStatus(UpdateView):
+#     model = Composition
+#     template_name = "writing_exercise/update_composition_status.html"
+#     form_class = StatusForm
+    
+def update_status(request, pk):
+    object = get_object_or_404(Composition, pk=pk)
+    
+    if request.method == 'POST':
+        object.is_solved = True
+        object.save()
+        return redirect('writing:class_room', pk)
+    else:
+        return render(request, "writing_exercise/update_composition_status.html", {'object': object})
 
 
 class MyCollection(ListView):

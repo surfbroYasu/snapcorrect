@@ -21,13 +21,28 @@
           </p>
       </div>
   </div>
+
+
+{% if composition.is_solved == True %}
+<div class="flex justify-end mr-10 mt-4 text-gray-600">
+  <i class='bx bx-badge-check text-4xl text-orange-600' ></i>
+</div>
+{% else %}
+<div class="flex justify-end mr-10 mt-4 text-gray-600">
+  <a href="{% url 'writing:status' composition.id %}" class="hover:text-orange-500">
+    <i class='bx bx-badge-check text-2xl' ></i> 疑問解決！
+  </a>
+</div>
+{% endif %}
+
+
   {% if request.user == composition.author %}
   <div class="flex justify-end mr-10 mt-4 text-gray-600">
     <a href="{% url 'writing:delete_composition' composition.id %}" class="hover:text-orange-500">
       <i class='bx bx-trash' ></i> 英作文を削除
     </a>
-    {% endif %}
   </div>
+  {% endif %}
   <div class="flex justify-center mt-10">
     <p>画像提供者 &ensp;</p>
     <a href="{% url 'photos:photographer' composition.photo.photographer.id %}" class="hover:text-orange-500">{{composition.photo.photographer.artist_name}}</a>
@@ -58,7 +73,7 @@
                 </button>
                 
                 <!-- Reply Button -->
-                <div class="md:mr-6 js-comment-button" data-comment-id="{{ comment.id }}">
+                <div class="md:mr-6 js-comment-button" data-comment="{{ comment.id }}">
                   <i class='bx bxs-comment-add text-lg'></i>
                 </div>
                 
@@ -92,7 +107,7 @@
             </p>
 
             <!-- Reply Button -->
-            <div class="md:mr-6 p-3 js-reply-button js-comment-button"  data-comment-id="{{ comment.id }}">
+            <div class="md:mr-6 p-3 js-reply-button js-comment-button"  data-comment="{{ comment.id }}">
               <i class='bx bxs-comment-add text-lg'></i>
             </div>
         </div>
@@ -126,7 +141,6 @@
       <form id="comment-form" action="{% url 'writing:class_room' composition.id %}" method="post" class="w-full" data-composition="{{ composition.id }}">
           {% csrf_token %}
           {{ comment_form.parent }}
-          {{ comment_form.commenting_to }}
           {{ comment_form.media}}
           {{ comment_form.text }}
       

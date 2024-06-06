@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block body %}
+
+<div class="flex w-full items-center justify-around">
+  <div
+    class="w-full max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg mt-10 bg-white"
+  >
+    <div class="text-center p-5 flex-auto justify-center">
+      <i
+        class="bx bx-badge-check bx-tada bx-rotate-180 text-orange-600 text-9xl"
+      >
+      </i>
+      <h2 class="text-xl font-bold py-4">Greate job!</h2>
+
+      <p class="text-sm text-gray-500 px-8">
+        お疲れ様でした。<br />この作文のステータスを解決済みに変更します。<br /><i
+          class="bx bxs-hand-down text-lg text-gray-400"
+        ></i>
+      </p>
+    </div>
+
+    <div class="p-3 mt-2 text-center space-y-4">
+      <form method="post">
+        {% csrf_token %}
+        <button
+          class="relative h-12 w-48 overflow-hidden rounded-2xl bg-orange-500 text-lg font-bold text-white mb-5
+        >
+          COMPLETE
+          <div
+            class="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"
+          >
+            <input type="submit" />
+          </div>
+        </button>
+      </form>
+
+      <div class="w-full">
+        <a
+          href="{% url 'writing:class_room' object.id %}"
+          class="inline-block text-blue-500"
+        >
+          Return
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

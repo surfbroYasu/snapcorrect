@@ -8,6 +8,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = str(os.environ.get("DEBUG"))=="1" #1 being True
 # Change Debug setting by changing number preferably to "0" for DEBUG=False
 
+INSTALLED_APPS += ['debug_toolbar', ]
+
+MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
+
+
 PRODUCTION = str(os.environ.get("PRODUCTION"))=="0" #1 being True
 # This is a dev setting defult PRODUCTION = "0" being false
 
@@ -58,32 +63,32 @@ MEDIA_URL = "/media/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    # BASE_DIR / "media",
+    BASE_DIR / "media",
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+# AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+# AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
-AWS_STORAGE_BUCKET_NAME = 'snapcorrect'
+# AWS_STORAGE_BUCKET_NAME = 'snapcorrect'
 
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-AWS_S3_FILE_OVERWRITE = False
+# AWS_S3_FILE_OVERWRITE = False
 
-STORAGES = {
-    # media file management
-    "default": {
-        "BACKEND": "storages.backends.s3boto3.S3StaticStorage"
-        },
-    # CSS and JS file management
-    "staticfiles": {
-        "BACKEND": "storages.backends.s3boto3.S3StaticStorage"
-        },
-}
+# STORAGES = {
+#     # media file management
+#     "default": {
+#         "BACKEND": "storages.backends.s3boto3.S3StaticStorage"
+#         },
+#     # CSS and JS file management
+#     "staticfiles": {
+#         "BACKEND": "storages.backends.s3boto3.S3StaticStorage"
+#         },
+# }
 
 
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
