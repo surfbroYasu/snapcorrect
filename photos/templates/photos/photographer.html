@@ -8,47 +8,6 @@
 
 
         <!-- top header -->
-        {% comment %} <div class="flex flex-col justify-center items-center my-10 lg:w-2/4 w-full">
-          <div class="bg-cover bg-center bg-no-repeat">
-            <img src="{{ photographer.image.url }}" alt="{{ photographer.artist_name }}"  class="rounded-full border-solid border-white border-2 -mt-3">
-          </div>
-          <span class="my-2 text-center font-semibold text-lg">
-            <i class='bx bx-camera' ></i> {{photographer.artist_name}}
-          </span>
-          <span class="my-2 text-center text-lg">
-            <i class='bx bx-map-pin' ></i> {{photographer.base_location}}
-          </span>
-          
-          <div class="flex gap-10 text-sm mb-3">
-            <div class="flex flex-col items-center">
-              <span class="font-bold">{{photographer.photos.count}}</span>
-              <span>Images</span>
-            </div>
-            <!-- 
-              <div class="flex flex-col items-center">
-                <span class="font-bold">1.20 K</span>
-                <span>Followers</span>
-              </div>
-              <div class="flex flex-col items-center">
-                <span class="font-bold">100 K</span>
-                <span>Likes</span>
-              </div>
-            -->
-            
-          </div>
-          
-          <p class="mb-3 px-8">{{photographer.bio | linebreaksbr}}</p>
-          {% if photographer.user == request.user %}
-          <a href="{% url 'photos:edit_photographer' pk=photographer.id %}">
-            <button class="my-5 px-5 py-2 text-sm border border-gray-100 bg-gray-400">編集</button>
-          </a>
-          {% endif %}
-        </div> {% endcomment %}
-        
-<!-- component -->
-
-
-
   <section class="relative lg:py-16 bg-blueGray-200 min-w-full">
     <div class="px-4">
       <div class="relative flex flex-col min-w-0 break-words bg-white w-full lg:mb-6 shadow-xl rounded-lg">
