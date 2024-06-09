@@ -116,6 +116,12 @@
                         <i class='bx bx-key' ></i>パスワード再設定
                       </a>
                     </div>
+                    <div
+                      class=" w-full block cursor-pointer hover:bg-white dark:hover:bg-gray-900 dark:bg-gray-800 hover:text-link px-3 py-2 rounded-md">
+                      <a href="{% url 'core:prof_detail' pk=request.user.id %}" class="text-gray-700 text-lg  hover:bg-gray-50 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 block pl-3 pr-4 py-2 lg:hover:text-orange-600 lg:p-0">
+                        <i class='bx bx-user-circle' > </i> {{request.user.username}}
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
