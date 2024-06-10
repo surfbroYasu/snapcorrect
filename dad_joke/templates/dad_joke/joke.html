@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>{{ joke.content }}</h1>
+
+{% if is_favorite %}
+    <p>This joke is in your favorites.</p>
+{% else %}
+    <form method="post" action="{% url 'dad_joke:add_favorite' joke.joke_id %}">
+        {% csrf_token %}
+        <button type="submit">Add to Favorites</button>
+    </form>
+{% endif %}
+
+<h2>Comments</h2>
+<ul>
+    {% for comment in comments %}
+        <li>{{ comment.user.username }}: {{ comment.content }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Add a Comment</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+{% endblock body %}
+{% url 'add_favorite' joke.id %}

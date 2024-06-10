@@ -9,6 +9,7 @@ from django.conf.urls.static import static
 from core import urls as core_urls
 from photos import urls as photos_urls
 from writing_exercise import urls as writing_urls
+from dad_joke import urls as dad_joke_urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -18,6 +19,7 @@ urlpatterns = [
     
     
     path("", include(core_urls, namespace="core")),
+    path("joke/", include(dad_joke_urls, namespace="dad_joke")),
     path("photo/", include(photos_urls, namespace="photos")),
     path("writing/", include(writing_urls, namespace="writing")),
     

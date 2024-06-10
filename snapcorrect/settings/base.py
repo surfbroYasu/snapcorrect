@@ -24,6 +24,7 @@ THIRD_PARTY_APPS = [
 
 APPS = [
     "core",
+    "dad_joke",
     "photos",
     "writing_exercise",
 ]
