@@ -12,7 +12,7 @@
             px-6 py-10 sm:px-10 sm:py-6
             bg-white rounded-lg shadow-md lg:shadow-lg">
       <div class="text-center mb-4">
-        <h6 class="font-semibold text-orange-600 text-xl">{% trans "Sign In" %}</h6>
+        <h6 class="font-semibold text-orange-600 text-xl">{% trans "Signup" %}</h6>
       </div>
       <form class="space-y-5" method="POST" action="{% url 'account_signup' %}">
         {% csrf_token %}
@@ -41,7 +41,7 @@
         <button type="submit" class="w-full py-3 bg-orange-600 rounded-md
           font-medium text-white uppercase
           focus:outline-none hover:shadow-none">
-          {% trans "Sign In" %}
+          {% trans "Signup" %}
         </button>
       </form>
       {% if SOCIALACCOUNT_ENABLED %}
