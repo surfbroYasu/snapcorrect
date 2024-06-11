@@ -19,13 +19,12 @@
 
             {% if profile.user == request.user %}
             <!-- TODO: link a page when setting page created -->
-            <!-- <a href="" class="py-2 lg:py-6 px-3  sm:mt-0">
+            <a href="{% url 'core:prof_setting' profile.id %}" class="py-2 lg:py-6 px-3  sm:mt-0">
               <button class="bg-gray-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none " type="button">
                 編集
               </button>
-            </a> -->
+            </a>
             {% endif %}
-
           </div>
 
 

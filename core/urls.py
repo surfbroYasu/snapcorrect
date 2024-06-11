@@ -8,4 +8,5 @@ urlpatterns = [
     path("", views.Homepage.as_view(), name= "home"),
     path("about/", views.About.as_view(), name= "about"),
     path("profile/<int:pk>", views.ProfileDetail.as_view(), name= "prof_detail"),
+    path("profile/settings/<int:pk>", views.ProfileUpdate.as_view(), name= "prof_setting"),
 ]
