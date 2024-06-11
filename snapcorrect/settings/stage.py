@@ -6,7 +6,7 @@ load_dotenv()
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = str(os.environ.get("DEBUG"))=="0" #1 being True, 
+DEBUG = str(os.environ.get("DEBUG"))=="1" #1 being True, 
 # Always KEEP DEBUG = False in production!!!
 
 INSTALLED_APPS += ['debug_toolbar', ]
